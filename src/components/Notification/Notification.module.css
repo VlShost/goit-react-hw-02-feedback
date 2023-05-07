@@ -1,0 +1,9 @@
+.wrapper {
+  width: 768px;
+  margin: auto;
+  text-align: center;
+}
+
+.message {
+  font-size: 50px;
+}

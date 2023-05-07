@@ -1,0 +1,13 @@
+.wrapper {
+  width: 400px;
+
+  margin: auto;
+
+  font-size: 30px;
+  text-align: start;
+}
+
+.item {
+  width: 250px;
+  font-size: 20px;
+}
