@@ -17,17 +17,16 @@ export class App extends Component {
     bad: this.props.initialValueBad,
   };
 
-  onLeaveFeedback = e => {
-    const option = e.target.textContent;
+  onLeaveFeedback = option => {
     this.setState(prevState => ({
-      [option]: (prevState[option] + 1),
+      [option]: prevState[option] + 1,
     }));
   };
 
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
-  };
+  }
 
   countPositivePercentage = () => {
     const { good, bad, neutral } = this.state;
@@ -38,21 +37,12 @@ export class App extends Component {
     const { good, bad, neutral } = this.state;
     const totalFeedback = this.countTotalFeedback();
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-          flexDirection: 'column',
-        }}
-      >
-        <Section title="Please leave feedback"></Section>
+      <div>
+        <Section title="Please leave feedback" />
         <FeedbackOptions
           options={Object.keys(this.state)}
           onLeaveFeedback={this.onLeaveFeedback}
-        ></FeedbackOptions>
+        />
         {totalFeedback > 0 ? (
           <Section title="Statistics">
             <Statistics
@@ -61,10 +51,10 @@ export class App extends Component {
               bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositivePercentage()}
-            ></Statistics>
+            />
           </Section>
         ) : (
-          <Notification message="There is no feedback"></Notification>
+          <Notification message="There is no feedback" />
         )}
       </div>
     );
